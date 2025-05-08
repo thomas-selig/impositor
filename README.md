@@ -1,7 +1,7 @@
 # impositor
 <img src="./logo-impositor.svg" width="25%" align="right" />
 
-Scripts to help with imposition of pdf-documents (for users of ring binders). Makes use of `pdfjam`, \LaTeX and `gs`.
+Scripts to help with imposition of pdf-documents (for users of ring binders). Makes use of `pdfjam`, $\LaTeX$ and `gs`.
 
 ## Current functionality
 Currently, the scripts takes a pdf-document and performs the following steps:
