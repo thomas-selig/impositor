@@ -29,9 +29,10 @@ case "$PRESET" in
     BINDING_EDGE="5"
     ;;
   a5)
-    PAGE_WIDTH="148mm"
-    PAGE_HEIGHT="210mm"
-    OFFSET="10mm 10mm"
+    PAGE_WIDTH="148"
+    PAGE_HEIGHT="210"
+    OFFSET="10 10"
+    BINDING_EDGE="5"
     ;;
   *)
     echo "Unknown preset: $PRESET"
