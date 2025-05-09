@@ -1,12 +1,22 @@
 # impositor
-<img src="./logo-impositor.svg" width="25%" style="padding: 0 1ex 0 2em" align="right" />
+<img src="./src/logo-impositor.svg" width="25%" style="padding: 0 1ex 0 2em" align="right" />
 
 Impositor consists of scripts to help with imposition of pdf-documents. Imposition is the process of arranging and ordering several pages of one document on one sheet for printing. In my case I mostly use it to create a "booklet" in correct sizes for cutting down in order to fit paper planners. There are plenty solutions out on the market but I needed a solution that met my requirements. The script had to be 
 1. *flexible* enough to easily support non-standard page dimensions and
 2. *portable* in order to be usable on a mobile device (in my case: on an Android phone, with Termux installed).
 
 Impositor is basically a wrapper that makes heavy use of `pdfjam`, `pdfbook`, $\LaTeX$ and `gs`. All those need to be installed on your system, otherwise impositor will fail.
+## Usage
 
+Usage: 
+```bash
+make-booklet.sh input.pdf [preset]
+```
+
+Currently predefined presets:
+
+- `org` – for the *Junior* size of the ring books from [Org-Verlag](https://org-verlag.de/)
+- `A5` – for A5-sized ring binders from Filofax and others
 ## Current functionality
 Currently, the scripts takes a pdf-document and performs the following steps:
 - cropping of whitespace (using `pdfcrop`)

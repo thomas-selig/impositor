@@ -14,7 +14,7 @@ CROPPED="${DIR}/${BASENAME}-cropped.pdf"
 echo "Cropping whitespace..."
 pdfcrop "$INPUT" "$CROPPED" --resolution 72
 
-# Step 1: Apply margin and set page size
+# Apply margin and set page size
 ########################################
 FIXED="${DIR}/${BASENAME}-fixed.pdf"
 SCALED="${DIR}/${BASENAME}-scaled.pdf"
@@ -49,12 +49,16 @@ pdfjam "$CROPPED" --papersize "{${SCALED_WIDTH}mm,${SCALED_HEIGHT}mm}" --twoside
 
 pdfjam "$SCALED" --papersize "{${PAGE_WIDTH}mm,${PAGE_HEIGHT}mm}" --twoside  --scale 1 --clip true --outfile "$FIXED"
 
+# Create booklet
+################
 BOOKLET="${DIR}/${BASENAME}-book.pdf"
   
 pdfbook --short-edge --scale 1 --noautoscale true --delta "${BINDING_EDGE}mm 0mm" "$FIXED" --outfile "$BOOKLET"
     
 echo "✅ Created booklet → $BOOKLET"
 
+# Seperate for duplex printing
+##############################
 echo "🖨️ Creating files for manual duplex printing..."
 
 EVEN="${DIR}/${BASENAME}-duplex1.pdf"
