@@ -1,0 +1,46 @@
+% overlay.tex
+\documentclass[border=0mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+% allow these to be overridden by \def on the command line:
+\providecommand{\pw}{95}     % logical page width
+\providecommand{\ph}{148}    % logical page height
+\providecommand{\m}{5}       % cut‐mark length
+\providecommand{\sheetW}{297}% sheet width
+\providecommand{\sheetH}{210}% sheet height
+
+\begin{document}
+\begin{tikzpicture}[x=1mm,y=-1mm,line width=0.3pt]
+  % compute centering offsets
+  \pgfmathsetmacro{\offsetX}{(\sheetW-2*\pw)/2}
+  \pgfmathsetmacro{\offsetY}{-(\sheetH-\ph)/2}
+
+  % set the PDF bbox to the full sheet
+  \useasboundingbox (0,0) rectangle (\sheetW,\sheetH);
+
+  % now center your marks in a shifted scope
+  \begin{scope}[shift={(\offsetX mm,\offsetY mm)}]
+    % positions of pages and fold
+    \pgfmathsetmacro{\leftX}{0}
+    \pgfmathsetmacro{\centerX}{\pw}
+    \pgfmathsetmacro{\rightX}{2*\pw}
+    \pgfmathsetmacro{\topY}{0}
+    \pgfmathsetmacro{\bottomY}{\ph}
+
+    % vertical marks
+    \foreach \x in {\leftX,\centerX,\rightX} {
+      \draw (\x,\topY)    -- (\x,-\m);
+      \draw (\x,\bottomY) -- (\x,{\bottomY+\m});
+    }
+
+    % horizontal marks
+    \foreach \y in {\topY,\bottomY} {
+      \draw (\leftX,\y)   -- (\leftX-\m,\y);
+      \draw (\centerX,\y) -- (\centerX-\m,\y);
+      \draw (\centerX,\y) -- (\centerX+\m,\y);
+      \draw (\rightX,\y)  -- (\rightX+\m,\y);
+    }
+  \end{scope}
+\end{tikzpicture}
+\end{document}
