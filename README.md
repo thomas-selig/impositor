@@ -29,7 +29,7 @@ Using all those steps is certainly not the most efficient method if everything w
 ## Wishlist
 The following aspects are planned (or at least thought about):
 - [X] cut marks for easier handling
-- [X] clean-up of temporay files (#b748a8b)
+- [X] clean-up of temporay files (https://github.com/thomas-selig/impositor/commit/b748a8b2abbb53dfcac0a2a18f0ac35cdff124ab)
 - [ ] cropping of PDF-files (beyond clipping to bounding box)
 - [ ] arranging multiple spreads on a single A4 (when target and source dimensions allow)
 - [ ] web interface for remote access
