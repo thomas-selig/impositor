@@ -7,6 +7,7 @@ PRESET="${2:-org}"
 BASENAME=$(basename "$INPUT" .pdf)
 PAPER_WIDTH=297
 PAPER_HEIGHT=210
+CROPMARK_LENGTH=5
 declare -a TO_CLEAN=()
 
 # DIR=$(dirname "$(realpath "$INPUT")")
@@ -78,7 +79,7 @@ pdflatex -interaction=nonstopmode -output-directory=./src \
   "\
 \def\pw{$PAGE_WIDTH}\
 \def\ph{$PAGE_HEIGHT}\
-\def\m{5}\
+\def\m{$CROPMARK_LENGTH}\
 \def\sheetW{$PAPER_WIDTH}\
 \def\sheetH{$PAPER_HEIGHT}\
 \input{src/overlay.tex}"
