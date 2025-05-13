@@ -19,7 +19,7 @@ Currently predefined presets:
 - `A5` – for A5-sized ring binders from Filofax and others
 ## Current functionality
 Currently, the scripts takes a pdf-document and performs the following steps:
-- cropping of whitespace (using `pdfcrop`)
+- cropping of whitespace (using ~~`pdfcrop`~~ `pdfcropmargin`)
 - resizing to a paper size using `pdfjam` (defaulting to the *Junior*-paper size of the *Org-Verlag*)
 - imposition of the pages (using `pdfbook`)
 - splitting and reordering the booklet into two different documents for manual duplex printing (using `gs`, followed by `pdfjam`)
@@ -31,5 +31,6 @@ The following aspects are planned (or at least thought about):
 - [X] cut marks for easier handling
 - [X] clean-up of temporay files (https://github.com/thomas-selig/impositor/commit/b748a8b2abbb53dfcac0a2a18f0ac35cdff124ab)
 - [ ] cropping of PDF-files (beyond clipping to bounding box)
+  - We are trying with `pdfCropMargins`
 - [ ] arranging multiple spreads on a single A4 (when target and source dimensions allow)
 - [ ] web interface for remote access

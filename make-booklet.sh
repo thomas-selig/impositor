@@ -16,7 +16,14 @@ DIR=$(dirname "$INPUT")
 #################
 CROPPED="${DIR}/${BASENAME}-cropped.pdf"
 echo "Cropping whitespace..."
-pdfcrop "$INPUT" "$CROPPED" --resolution 72
+if command -v pdfcropmargins >/dev/null 2>&1; then
+  echo "...using pdfcropmargins"
+  pdfcropmargins "$INPUT" -o "$CROPPED"
+else
+  echo "...pdfcropmargins not found. Install using 'pip3 install pdfCropMargins --user --upgrade'. Falling back to pdfcrop."
+  pdfcrop "$INPUT" "$CROPPED" --resolution 72
+fi
+#pdfcrop "$INPUT" "$CROPPED" --resolution 72
 TO_CLEAN+=( "$CROPPED" )
 
 # Apply margin and set page size
